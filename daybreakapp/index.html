@@ -1,0 +1,1011 @@
+<html>
+
+<head>
+    <title>DaybreakApp</title>
+
+    <meta content="DaybreakApp" property="og:title" />
+    <meta content="Some stuff you can use for Daybreak like randomizers." property="og:description" />
+    <meta content="lyzaldra.github.io/daybreakapp" property="og:url" />
+    <meta content="lyzaldra.github.io/daybreakapp/resources/icon.png" property="og:image" />
+    <meta content="#484848" data-react-helmet="true" name="theme-color" />
+
+    <link rel="icon" type="image/x-icon" href="https://lyzaldra.github.io/daybreakapp/resources/favicon.ico">
+
+    <style>
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: black;
+        }
+
+        .tab button {
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            float: left;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        .tab button:hover {
+            background-color: grey;
+        }
+
+        .tab button.active {
+            background-color: rgb(83, 88, 88);
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: none;
+            border-top: none;
+            font-size: 20px;
+        }
+
+        .settingssection {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .headline {
+            font-size: 20px;
+        }
+
+        .checkboxlist {
+            line-height: 1.4;
+            border: 1px solid #ccc;
+        }
+
+        .normalbutton {
+            background-color: rgb(104, 98, 98);
+            color: rgb(255, 255, 255);
+            border: 1px solid #ccc;
+            cursor: pointer;
+            padding: 10px 14px;
+            transition: 0.3s;
+        }
+
+        .generatebutton {
+            background-color: rgb(104, 98, 98);
+            color: rgb(255, 255, 255);
+            border: 1px solid #ccc;
+            cursor: pointer;
+            padding: 20px 30px;
+            transition: 0.3s;
+            font-size: 25px;
+        }
+
+        .resultsection {
+            line-height: 1.5;
+        }
+
+        .resultlabel {
+            display: inline-block;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body bgcolor="#000000" text="#ffffff">
+
+    <!-- Variables -->
+
+    <script>
+
+        let version = "1.1"
+        let currentmode = "";
+
+        let lastgenerations = {
+            ["SurvivorPerk"]: -1,
+            ["SurvivorCharacter"]: -1,
+            ["Killer"]: -1,
+        }
+
+        let defaultsettings = {
+            ["GenerateUniqueCharacter"]: "True",
+            ["CharacterAmount"]: "1"
+        }
+
+
+
+        let survivorList = [];
+        survivorList[0] = {
+            name: "Nami Deng",
+            perk: "Hard Times"
+        };
+        survivorList[1] = {
+            name: "Adriana Penn",
+            perk: "Self Control"
+        };
+        survivorList[2] = {
+            name: "Eiji Inagaki",
+            perk: "Old Camera"
+        };
+        survivorList[3] = {
+            name: "Gabrielle Cole",
+            perk: "Tracking Machine"
+        };
+        survivorList[4] = {
+            name: "Arlo Flores",
+            perk: "Healer's Touch"
+        };
+        survivorList[5] = {
+            name: "Riley West",
+            perk: "Cheap Thrill"
+        };
+        survivorList[6] = {
+            name: "Iris Daley",
+            perk: "Pot of Life"
+        };
+        survivorList[7] = {
+            name: "Jun Inagaki",
+            perk: "Tough"
+        };
+        survivorList[8] = {
+            name: "Yara Valle",
+            perk: "Second Wind"
+        };
+        survivorList[9] = {
+            name: "Cora Madden",
+            perk: "Investigative Eye"
+        };
+        survivorList[10] = {
+            name: "Mamo Ikaika",
+            perk: "Mamo's Bat"
+        };
+        survivorList[11] = {
+            name: "Seoung Kwan",
+            perk: "Spiritual Connection"
+        };
+        survivorList[12] = {
+            name: "Jack Sato",
+            perk: "Stealthy"
+        };
+        survivorList[13] = {
+            name: "Chaoxing Lai",
+            perk: "Xingxing's Mic"
+        };
+        survivorList[14] = {
+            name: "Taylor Dalton",
+            perk: "Good Teacher"
+        };
+        survivorList[15] = {
+            name: "Dae-Jung Pak",
+            perk: "Charm"
+        };
+        survivorList[16] = {
+            name: "Yeona Jeung",
+            perk: "Obsessed"
+        };
+        survivorList[17] = {
+            name: "Kyle Wolfe",
+            perk: "Bear Trap"
+        };
+        survivorList[18] = {
+            name: "Serena Wolfe",
+            perk: "Hunter's Instinct"
+        };
+        survivorList[19] = {
+            name: "Yan Tian",
+            perk: "Detection Machine"
+        };
+        survivorList[20] = {
+            name: "Nathan Reyes",
+            perk: "Wit's End"
+        };
+        survivorList[21] = {
+            name: "Elizabeth Payne",
+            perk: "Self Assurance"
+        };
+        survivorList[22] = {
+            name: "Yvonne Kojo",
+            perk: "Fight or Flight"
+        };
+        survivorList[23] = {
+            name: "Becca Prescott",
+            perk: "Sole Survivor"
+        };
+        survivorList[24] = {
+            name: "Sarah Lindholm",
+            perk: "Lone Wolf"
+        };
+        survivorList[25] = {
+            name: "Lyndon Davenport",
+            perk: "Rauhm"
+        };
+        survivorList[26] = {
+            name: "Dakari Bowens",
+            perk: "Heal Gun"
+        };
+        survivorList[27] = {
+            name: "Saadiya Ali",
+            perk: "Course Control"
+        };
+        survivorList[28] = {
+            name: "Elijah Songaa",
+            perk: "Breakthrough"
+        };
+        survivorList[29] = {
+            name: "Eman Attia",
+            perk: "Evanesce"
+        };
+        survivorList[30] = {
+            name: "Aaaqil Che",
+            perk: "Adaptability"
+        };
+        survivorList[31] = {
+            name: "Yronica Ayala",
+            perk: "Egocentric Leech"
+        };
+        survivorList[32] = {
+            name: "Callum Gallagher",
+            perk: "Team Spirit"
+        };
+        survivorList[33] = {
+            name: "Emery Rivera",
+            perk: "Disappearing Act"
+        };
+        survivorList[34] = {
+            name: "Amari Taymiyyah",
+            perk: "Vagrant's Trick"
+        };
+        survivorList[35] = {
+            name: "Sanjana Dewan",
+            perk: "Quiet Steps"
+        };
+        survivorList[36] = {
+            name: "Kelvin Mars",
+            perk: "Sonar Dart"
+        };
+        survivorList[37] = {
+            name: "Gavin Prescott",
+            perk: "Gavin's Pistol"
+        };
+        survivorList[38] = {
+            name: "Parker Kaplan",
+            perk: "Triple Mocktail"
+        };
+        survivorList[39] = {
+            name: "Crosby Aldrich",
+            perk: "Royal Rule"
+        };
+        survivorList[40] = {
+            name: "Rayner Byrne",
+            perk: "Rayner's Shield"
+        };
+        survivorList[41] = {
+            name: "Serena 'Sera' Vera",
+            perk: "Smooth Skating"
+        };
+        survivorList[42] = {
+            name: "Dakota Nicole",
+            perk: "Flame Sprayer"
+        };
+        survivorList[43] = {
+            name: "Ryder Parikh",
+            perk: "Detail Oriented"
+        };
+        survivorList[44] = {
+            name: "Makoto Shizuka",
+            perk: "Shortcut"
+        };
+        survivorList[45] = {
+            name: "Crystal Kaur",
+            perk: "Clear Quartz"
+        };
+        survivorList[46] = {
+            name: "Emil Singh",
+            perk: "Inspire"
+        };
+        survivorList[47] = {
+            name: "Jonas Weber",
+            perk: "Sanity Soda"
+        };
+        survivorList[48] = {
+            name: "Wren Harris",
+            perk: "Menial Work"
+        };
+        survivorList[49] = {
+            name: "Tabitha Harris",
+            perk: "Maternal Instinct"
+        };
+        survivorList[50] = {
+            name: "Kiara Cruz",
+            perk: "Life of the Party"
+        };
+        survivorList[51] = {
+            name: "Anais Desir",
+            perk: "Complete Control"
+        };
+
+        let killerlist = [];
+        killerlist[0] = {
+            name: "The Slasher"
+        };
+        killerlist[1] = {
+            name: "The Host"
+        };
+        killerlist[2] = {
+            name: "The Ghost"
+        };
+        killerlist[3] = {
+            name: "The Showstopper"
+        };
+        killerlist[4] = {
+            name: "The Unforgotten"
+        };
+        killerlist[5] = {
+            name: "The Werewolf"
+        };
+        killerlist[6] = {
+            name: "The Idol"
+        };
+        killerlist[7] = {
+            name: "The Android"
+        };
+        killerlist[8] = {
+            name: "The Warden"
+        };
+        killerlist[9] = {
+            name: "The Polluted"
+        };
+        killerlist[10] = {
+            name: "The Stalker"
+        };
+        killerlist[11] = {
+            name: "The Banshee"
+        };
+        killerlist[12] = {
+            name: "The Principal"
+        };
+        killerlist[13] = {
+            name: "The Janitor"
+        };
+        killerlist[14] = {
+            name: "The Apostate"
+        };
+        killerlist[15] = {
+            name: "The Watcher"
+        };
+        killerlist[16] = {
+            name: "The Surgeon"
+        };
+        killerlist[17] = {
+            name: "The Voidskulk"
+        };
+        killerlist[18] = {
+            name: "The Empress"
+        };
+        killerlist[19] = {
+            name: "The Boss"
+        };
+        killerlist[20] = {
+            name: "The Possessed"
+        };
+
+
+        if (localStorage.checkedSurvivors === null || localStorage.checkedSurvivors === undefined) {
+            localStorage.checkedSurvivors = "";
+        }
+        if (localStorage.checkedKillers === null || localStorage.checkedKillers === undefined) {
+            localStorage.checkedKillers = "";
+        }
+
+        for (let [option, value] of Object.entries(defaultsettings)) {
+            if (localStorage.getItem(option) === null || localStorage.getItem(option) === undefined) {
+                localStorage.setItem(option, value);
+            }
+        }
+    </script>
+
+
+
+    <section>
+        <img src="resources/icon.png" style="width:80px; height: 80px;">
+    </section>
+
+    <br>
+
+    <template id="SurvivorGenerationTemplate">
+        <label id="generatedPerkLabel" class="resultlabel">Perk:</label><br>
+        <label id="generatedCharacterLabel" class="resultlabel">Character:</label>
+        <br>
+    </template>
+
+    <template id="KillerGenerationTemplate">
+        <label id="generatedKillerLabel" class="resultlabel">Killer:</label>
+        <br>
+    </template>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Survivor Randomizer Tab', 'Survivor')"
+            id="SurvivorRandomizerTab">Survivor
+            Randomizer</button>
+        <button class="tablinks" onclick="openTab(event, 'Killer Randomizer Tab', 'Killer')"
+            id="KillerRandomizerTab">Killer
+            Randomizer</button>
+    </div>
+
+    <!-- Survivor Randomizer Tab -->
+
+    <div id="Survivor Randomizer Tab" class="tabcontent">
+        <h2>Survivor Randomizer</h2>
+        This tool will give you a random perk you can use in your next game.<br>
+        It will also give you a random character which you can use if you have the perk unlocked.<br>
+        <br>
+
+        Select all survivors you want to be part of the randomizer and then hit Generate!
+
+        <br>
+
+        (Tip: Use CTRL + F to search for a survivor or perk!)
+        <br><br>
+
+
+
+        <br>
+
+        <button class="normalbutton" onclick="ToggleAll('SurvivorList', true)">Activate all</button>
+        <button class="normalbutton" onclick="ToggleAll('SurvivorList', false)">Deactivate all</button>
+        <br><br>
+
+
+
+        <section id="SurvivorList" class="checkboxlist">
+
+        </section>
+
+    </div>
+
+
+    <!-- Killer Randomizer Tab -->
+
+    <div id="Killer Randomizer Tab" class="tabcontent">
+        <h2>Killer Randomizer</h2>
+        This tool will give you a random killer you can use in your next game.<br>
+        <br>
+
+        Select all killers you want to be part of the randomizer and then hit Generate!
+
+        <br>
+
+        (Tip: Use CTRL + F to search for a killer!)
+        <br><br>
+
+        <button class="normalbutton" onclick="ToggleAll('KillerList', true)">Activate all</button>
+        <button class="normalbutton" onclick="ToggleAll('KillerList', false)">Deactivate all</button>
+        <br><br>
+
+        <section id="KillerList" class="checkboxlist">
+
+        </section>
+
+    </div>
+
+    <hr>
+    <!-- Settings -->
+    <section class="settingssection">
+        <h2>Settings</h2>
+
+        <label for="GenerateUniqueCharacter">Generate unique characters</label><input type="checkbox"
+            id="GenerateUniqueCharacter" onChange="UpdateSetting('GenerateUniqueCharacter')"><br>
+        <label for="CharacterAmount">Amount of characters</label> <input id="CharacterAmount"
+            onChange="UpdateSetting('CharacterAmount')"><br>
+
+    </section>
+    <br>
+    <hr>
+    <br>
+    <button class="generatebutton" onclick="GenerateRandom()">Generate!</button>
+    
+    <br><br>
+
+    <section class="headline">
+        <h2>Results</h2>
+    </section>
+    
+    <section class="resultsection" id="ResultList">
+        
+    </section>
+
+
+    <button class="normalbutton" style="float: right" onclick="ResetData()">Reset Data</button>
+    <br>
+    <center><label id="versionLabel">Version</label></center>
+
+    <!-- Randomizer Functions -->
+
+    <script>
+        function GenerateRandom() {
+            let resultList = document.getElementById("ResultList");
+            resultList.innerHTML = "";
+
+            if (currentmode === "Survivor") {
+                GetRandomSurvivor()
+            } else if (currentmode === "Killer") {
+                GetRandomKiller()
+            }
+        }
+
+
+        function GetRandomSurvivor() {
+            let survivorListElement = document.getElementById("SurvivorList");
+            let resultList = document.getElementById("ResultList");
+            let survivorGenerateButton = document.getElementById("survivorGenerateButton");
+
+            let characteramount = Number(localStorage.CharacterAmount);
+
+
+            let randomperkpool = []
+            let randomcharacterpool = []
+
+            for (index = 0; index < survivorListElement.children.length; index++) {
+                let element = survivorListElement.children[index];
+                if (element.type == "checkbox") {
+                    if (element.checked == true) {
+                        let survivor = FindSurvivorInList("name", element.name);
+                        let perk = survivor.perk;
+                        let addon = "'s";
+
+                        if (element.name.charAt(element.name.length - 1) == 's') {
+                            addon = "'";
+                        }
+
+                        randomperkpool.push(perk + " (" + element.name + addon + " perk)");
+                        randomcharacterpool.push(element.name);
+                    }
+                }
+            }
+
+            if (randomperkpool.length <= 1) {
+                alert("You need to select at least two survivors!");
+            } else if (randomperkpool.length < characteramount) {
+                alert("You need to select as many survivors as you want to generate!")
+            } else {
+
+                for (generation = 0; generation < characteramount; generation++) {
+                    let template = document.getElementById("SurvivorGenerationTemplate");
+                    let clone = template.content.cloneNode(true);
+
+                    let perklabel = clone.querySelector("#generatedPerkLabel");
+                    let characterLabel = clone.querySelector("#generatedCharacterLabel");
+
+                    if (characteramount === 1 && localStorage.GenerateUniqueCharacter === "True") {
+                        if (lastgenerations.SurvivorPerk != -1) {
+                            for (perkindex = 0; perkindex < randomperkpool.length; perkindex++) {
+                                let perk = randomperkpool[perkindex];
+                                if (perk === lastgenerations.SurvivorPerk) {
+                                    randomperkpool.splice(perkindex, 1)
+                                    break;
+                                }
+                            }
+                            for (charindex = 0; charindex < randomcharacterpool.length; charindex++) {
+                                let character = randomcharacterpool[charindex];
+                                if (character === lastgenerations.SurvivorCharacter) {
+                                    randomcharacterpool.splice(charindex, 1)
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    let randomperkindex = Math.floor(Math.random() * randomperkpool.length);
+                    let randomcharacterindex = Math.floor(Math.random() * randomcharacterpool.length);
+
+                    let randomperk = randomperkpool[randomperkindex];
+                    let randomcharacter = randomcharacterpool[randomcharacterindex];
+
+
+                    if (localStorage.GenerateUniqueCharacter === "True") {
+                        randomperkpool.splice(randomperkindex, 1);
+                        randomcharacterpool.splice(randomcharacterindex, 1);
+                    }
+
+
+                    perklabel.innerHTML = "Perk: " + randomperk;
+                    characterLabel.innerHTML = "Character: " + randomcharacter;
+
+                    if (generation < characteramount - 1) {
+                        let line = document.createElement("hr");
+                        clone.appendChild(line);
+                    }
+
+                    if (characteramount === 1) {
+                        lastgenerations.SurvivorPerk = randomperk;
+                        lastgenerations.SurvivorCharacter = randomcharacter;
+                    }
+
+                    resultList.appendChild(clone);
+                }
+
+            }
+        }
+
+        function GetRandomKiller() {
+
+            let killerListElement = document.getElementById("KillerList");
+            let resultList = document.getElementById("ResultList");
+
+            let characteramount = Number(localStorage.CharacterAmount);
+
+            let randomcharacterpool = []
+
+            for (i = 0; i < killerListElement.children.length; i++) {
+                let element = killerListElement.children[i];
+                if (element.type == "checkbox") {
+                    if (element.checked == true) {
+                        randomcharacterpool.push(element.name);
+                    }
+                }
+            }
+
+            if (randomcharacterpool.length <= 1) {
+                alert("You need to select at least two killers!");
+            } else if (randomcharacterpool.length < characteramount) {
+                alert("You need to select as many killers as you want to generate!");
+            } else {
+
+                for (generation = 0; generation < characteramount; generation++) {
+                    let template = document.getElementById("KillerGenerationTemplate");
+                    let clone = template.content.cloneNode(true);
+
+                    if (characteramount === 1 && localStorage.GenerateUniqueCharacter === "True") {
+                        if (lastgenerations.Killer != -1) {
+                            for (killerindex = 0; killerindex < randomcharacterpool.length; killerindex++) {
+                                let killer = randomcharacterpool[killerindex]
+
+                                if (killer === lastgenerations.Killer) {
+                                    randomcharacterpool.splice(killerindex, 1);
+                                }
+                            }
+                        }
+                    }
+
+                    let randomcharacterindex = Math.floor(Math.random() * randomcharacterpool.length)
+                    let randomcharacter = randomcharacterpool[randomcharacterindex];
+
+                    if (localStorage.GenerateUniqueCharacter === "True") {
+                        randomcharacterpool.splice(randomcharacterindex, 1);
+                    }
+
+                    if (generation < characteramount - 1) {
+                        let line = document.createElement("hr");
+                        clone.appendChild(line);
+                    }
+
+                    if (characteramount === 1) {
+                        lastgenerations.Killer = randomcharacter;
+                    }
+
+                    let label = clone.querySelector("#generatedKillerLabel");
+
+                    label.innerHTML = "Killer: " + randomcharacter;
+
+                    resultList.appendChild(clone);
+                }
+
+            }
+        }
+
+    </script>
+
+    <!-- Website Functions -->
+
+    <script>
+        function openTab(event, tabName, mode) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            tablinks = document.getElementsByClassName("tablinks");
+
+            for (i = 0; i < tablinks.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            currentmode = mode;
+            event.currentTarget.className += " active";
+        }
+
+        function ToggleAll(list, change) {
+            let listElement = document.getElementById(list);
+            let type = ""
+
+            if (list === "SurvivorList") {
+                type = "Survivor";
+            } else if (list === "KillerList") {
+                type = "Killer";
+            }
+
+            for (index = 0; index < listElement.children.length; index++) {
+                let element = listElement.children[index];
+
+                if (element.type == "checkbox") {
+                    element.checked = change;
+                    SaveCheckboxOption(element.name, type);
+                }
+
+            }
+
+        }
+
+
+        function FindSurvivorInList(key, value) {
+            for (i = 0; i < survivorList.length; i++) {
+                let survivor = survivorList[i];
+
+                if (survivor[key] === value) {
+                    return survivor
+                }
+            }
+        }
+
+        function FindKillerInList(key, value) {
+            for (i = 0; i < killerlist.length; i++) {
+                let killer = killerlist[i];
+
+                if (killer[key] === value) {
+                    return killer
+                }
+            }
+        }
+
+        function CheckIfSaved(saveString, id) {
+            let split = saveString.split(',')
+
+            if (split.length > 0 && !split[0] == "") {
+                for (i = 0; i < split.length; i++) {
+                    let value = split[i];
+
+                    if (value === id) {
+                        return true;
+                    }
+                }
+            }
+
+
+            return false;
+        }
+
+        function SaveCheckboxOption(name, type) {
+
+            let array = []
+            let savedstring = "";
+            let listEntry = {};
+
+            if (type === "Survivor") {
+                savedstring = localStorage.checkedSurvivors;
+                listEntry = FindSurvivorInList("name", name);
+            } else if (type === "Killer") {
+                savedstring = localStorage.checkedKillers;
+
+                listEntry = FindKillerInList("name", name);
+            }
+
+            let checkbox = document.getElementById(type + "_" + listEntry.id.toString() + "_Checkbox")
+            if (savedstring === "") {
+                array = []
+            } else {
+                array = savedstring.split(',');
+            }
+
+
+
+            let i = 0;
+            while (i < array.length) {
+                if (array[i] === listEntry.id.toString()) {
+                    array.splice(i, 1);
+                } else {
+                    i++;
+                }
+            }
+
+
+            if (checkbox.checked === true) {
+                array.push(listEntry.id);
+            }
+
+            savedstring = array.toString();
+
+            if (type === "Survivor") {
+                localStorage.setItem("checkedSurvivors", savedstring);
+            } else if (type === "Killer") {
+                localStorage.setItem("checkedKillers", savedstring);
+            }
+
+
+        }
+
+        function ResetData() {
+            if (confirm("Are you sure you want to reset your data?") == true) {
+                localStorage.checkedSurvivors = "";
+                localStorage.checkedKillers = "";
+
+                for (let [option, value] of Object.entries(defaultsettings)) {
+                    localStorage.setItem(option, value);
+                }
+
+                alert("Data reset!");
+            }
+
+
+        }
+
+        function AddIDsToCollection() {
+            for (index = 0; index < survivorList.length; index++) {
+                survivorList[index].id = index;
+            }
+            for (index = 0; index < killerlist.length; index++) {
+                killerlist[index].id = index;
+            }
+        }
+
+        function ConvertOldSaveData() {
+            if (!localStorage.didNameToIdConversion === true) {
+                let changed = false;
+
+                let oldSurvivorList = localStorage.checkedSurvivors.toString()
+                let oldKillerList = localStorage.checkedKillers.toString()
+
+                let survivorNames = [];
+                let killerNames = [];
+
+                //     for (index = 0; index < survivorList.length; index++) {
+                //         let survivor = survivorList[index];
+                //          survivorNames.push(survivor.name);
+                //     }
+                //      for (index = 0; index < killerlist.length; index++) {
+                //          let killer = killerlist[index];
+                //         killerNames.push(killer.name);
+                //    }
+
+                for (index = 0; index < survivorList.length; index++) {
+                    let survivor = survivorList[index];
+                    localStorage.checkedSurvivors = localStorage.checkedSurvivors.replace(survivor.name, survivor.id.toString())
+                }
+
+                for (index = 0; index < killerlist.length; index++) {
+                    let killer = killerlist[index];
+                    localStorage.checkedKillers = localStorage.checkedKillers.replace(killer.name, killer.id.toString())
+                }
+
+
+                localStorage.didNameToIdConversion = true;
+            }
+
+
+
+
+        }
+
+
+        function UpdateSetting(setting) {
+
+            let element = document.getElementById(setting);
+
+            // Special Cases
+
+            if (setting === "CharacterAmount") {
+                if (isNaN(element.value)) {
+                    alert("Please enter a valid number!");
+                    return;
+                } else {
+                    let num = Number(element.value);
+                    if (!Number.isInteger(num)) {
+                        alert("Please enter a full number!");
+                        return;
+                    } else {
+                        if (num < 0) {
+                            alert("Please enter a positive number!");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Update
+
+            if (element.type === "checkbox") {
+                if (element.checked === true) {
+                    localStorage.setItem(setting, "True");
+                } else {
+                    localStorage.setItem(setting, "False");
+                }
+            } else if (element.type === "text") {
+                localStorage.setItem(setting, element.value);
+            }
+
+        }
+
+    </script>
+
+    <!-- Load data and fill in variables -->
+    <script>
+        let survivorTab = document.getElementById("SurvivorList");
+        let killerTab = document.getElementById("KillerList");
+
+        AddIDsToCollection()
+
+        ConvertOldSaveData()
+
+        for (index = 0; index < survivorList.length; index++) {
+            let survivor = survivorList[index];
+            let checkbox = document.createElement("input");
+
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("id", "Survivor_" + index.toString() + "_Checkbox");
+
+            checkbox.setAttribute("name", survivor.name);
+            checkbox.setAttribute("value", survivor.name);
+
+            checkbox.addEventListener("change", function () {
+                SaveCheckboxOption(survivor.name, "Survivor");
+            }, false);
+
+            let label = document.createElement("label");
+            label.setAttribute("for", survivor.name);
+            label.innerHTML = survivor.name + " (" + survivor.perk + ")" + "<br>";
+
+            if (CheckIfSaved(localStorage.checkedSurvivors, index.toString())) {
+                checkbox.checked = true;
+            }
+
+
+            survivorTab.appendChild(checkbox);
+            survivorTab.appendChild(label);
+        }
+
+        for (index = 0; index < killerlist.length; index++) {
+            let killer = killerlist[index];
+
+            let checkbox = document.createElement("input");
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("id", "Killer_" + index.toString() + "_Checkbox");
+            checkbox.setAttribute("name", killer.name);
+            checkbox.setAttribute("value", killer.name);
+
+            checkbox.addEventListener("change", function () {
+                SaveCheckboxOption(killer.name, "Killer");
+            }, false);
+
+            let label = document.createElement("label");
+            label.setAttribute("for", killer.name);
+            label.innerHTML = killer.name + "<br>";
+
+
+            if (CheckIfSaved(localStorage.checkedKillers, index.toString())) {
+                checkbox.checked = true;
+            }
+
+            killerTab.appendChild(checkbox);
+            killerTab.appendChild(label);
+        }
+
+        // Apply Settings
+
+        let generateuniquecharacter = document.getElementById("GenerateUniqueCharacter");
+        let characteramount = document.getElementById("CharacterAmount");
+
+        if (localStorage.GenerateUniqueCharacter === "True") {
+            generateuniquecharacter.checked = true;
+        }
+
+        characteramount.value = localStorage.CharacterAmount;
+
+    </script>
+
+
+    <!-- Open default tab and set version number -->
+    <script>
+        document.getElementById("versionLabel").innerHTML = "Version " + version
+        document.getElementById("SurvivorRandomizerTab").click();
+    </script>
+
+</body>
+
+</html>
