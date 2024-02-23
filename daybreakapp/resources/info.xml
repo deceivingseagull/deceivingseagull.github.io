@@ -1,0 +1,73 @@
+<characterinfo>
+    <survivors>
+        <survivor perk="Hard Times">Nami Deng</survivor>
+        <survivor perk="Self Control">Adriana Penn</survivor>
+        <survivor perk="Old Camera">Eiji Inagaki</survivor>
+        <survivor perk="Tracking Machine">Gabrielle Cole</survivor>
+        <survivor perk="Healer's Touch">Arlo Flores</survivor>
+        <survivor perk="Cheap Thrill">Riley West</survivor>
+        <survivor perk="Pot of Life">Iris Daley</survivor>
+        <survivor perk="Tough">Jun Inagaki</survivor>
+        <survivor perk="Second Wind">Yara Valle</survivor>
+        <survivor perk="Investigative Eye">Cora Madden</survivor>
+        <survivor perk="Mamo's Bat">Mamo Ikaika</survivor>
+        <survivor perk="Spiritual Connection">Seoung Kwan</survivor>
+        <survivor perk="Stealthy">Jack Sato</survivor>
+        <survivor perk="Xingxing's Mic">Chaoxing Lai</survivor>
+        <survivor perk="Good Teacher">Taylor Dalton</survivor>
+        <survivor perk="Charm">Dae-Jung Pak</survivor>
+        <survivor perk="Obsessed">Yeona Jeung</survivor>
+        <survivor perk="Bear Trap">Kyle Wolfe</survivor>
+        <survivor perk="Hunter's Instinct">Serena Wolfe</survivor>
+        <survivor perk="Detection Machine">Yan Tian</survivor>
+        <survivor perk="Wit's End">Nathan Reyes</survivor>
+        <survivor perk="Self Assurance">Elizabeth Payne</survivor>
+        <survivor perk="Fight or Flight">Yvonne Kojo</survivor>
+        <survivor perk="Sole Survivor">Becca Prescott</survivor>
+        <survivor perk="Lone Wolf">Sarah Lindholm</survivor>
+        <survivor perk="Rauhm">Lyndon Davenport</survivor>
+        <survivor perk="Heal Gun">Dakari Bowens</survivor>
+        <survivor perk="Course Control">Saadiya Ali</survivor>
+        <survivor perk="Breakthrough">Elijah Songaa</survivor>
+        <survivor perk="Evanesce">Eman Attia</survivor>
+        <survivor perk="Adaptability">Aaaqil Che</survivor>
+        <survivor perk="Egocentric Leech">Yronica Ayala</survivor>
+        <survivor perk="All Together">Callum Gallagher</survivor>
+        <survivor perk="Disappearing Act">Emery Rivera</survivor>
+        <survivor perk="Vagrant's Trick">Amari Taymiyyah</survivor>
+        <survivor perk="Quiet Steps">Sanjana Dewan</survivor>
+        <survivor perk="Sonar Dart">Kelvin Mars</survivor>
+        <survivor perk="Gavin's Pistol">Gavin Prescott</survivor>
+        <survivor perk="Triple Mocktail">Parker Kaplan</survivor>
+        <survivor perk="Royal Rule">Crosby Aldrich</survivor>
+        <survivor perk="Rayner's Shield">Rayner Byrne</survivor>
+        <survivor perk="Smooth Skating">Serena 'Sera' Vera</survivor>
+        <survivor perk="Flame Sprayer">Dakota Nicole</survivor>
+        <survivor perk="Detail Oriented">Ryder Parikh</survivor>
+        <survivor perk="Shortcut">Makoto Shizuka</survivor>
+        <survivor perk="Clear Quartz">Crystal Kaur</survivor>
+        <survivor perk="Inspire">Emil Singh</survivor>
+    </survivors>
+
+    <killers>
+        <killer>The Slasher</killer>
+        <killer>The Host</killer>
+        <killer>The Ghost</killer>
+        <killer>The Showstopper</killer>
+        <killer>The Unforgotten</killer>
+        <killer>The Werewolf</killer>
+        <killer>The Idol</killer>
+        <killer>The Android</killer>
+        <killer>The Warden</killer>
+        <killer>The Polluted</killer>
+        <killer>The Stalker</killer>
+        <killer>The Banshee</killer>
+        <killer>The Principal</killer>
+        <killer>The Janitor</killer>
+        <killer>The Apostate</killer>
+        <killer>The Watcher</killer>
+        <killer>The Surgeon</killer>
+        <killer>The Voidskulk</killer>
+        <killer>The Empress</killer>
+    </killers>
+</characterinfo>
