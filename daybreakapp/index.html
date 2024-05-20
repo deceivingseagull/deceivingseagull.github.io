@@ -4,7 +4,7 @@
     <title>DaybreakApp</title>
 
     <meta content="DaybreakApp" property="og:title" />
-    <meta content="Some stuff you can use for Daybreak, like randomizers." property="og:description" />
+    <meta content="Survivor and Killer randomizer for Daybreak." property="og:description" />
     <meta content="deceivingseagull.github.io/daybreakapp" property="og:url" />
     <meta content="deceivingseagull.github.io/daybreakapp/resources/icon.png" property="og:image" />
     <meta content="#484848" data-react-helmet="true" name="theme-color" />
@@ -94,7 +94,7 @@
 
     <script>
 
-        let version = "1.1"
+        let version = "1.2"
         let currentmode = "";
 
         let lastgenerations = {
@@ -109,291 +109,400 @@
         }
 
 
+        let icons = {
+            ["Looper"]: "👟",
+            ["Genrusher"]: "⚡",
+            ["Stealth"]: "👁️",
+            ["Support"]: "❤️",
+            ["Anti-Loop"]: "👟",
+            ["Assault"]: "🔪",
+            ["Gen-Control"]: "⚡",
+            ["Mobility"]: "🍃",
+        }
+
+
 
         let survivorList = [];
         survivorList[0] = {
             name: "Nami Deng",
-            perk: "Hard Times"
+            perk: "Hard Times",
+            class: "Stealth"
         };
         survivorList[1] = {
             name: "Adriana Penn",
-            perk: "Self Control"
+            perk: "Self Control",
+            class: "Stealth"
         };
         survivorList[2] = {
             name: "Eiji Inagaki",
-            perk: "Old Camera"
+            perk: "Old Camera",
+            class: "Looper"
         };
         survivorList[3] = {
             name: "Gabrielle Cole",
-            perk: "Tracking Machine"
+            perk: "Tracking Machine",
+            class: "Genrusher"
         };
         survivorList[4] = {
             name: "Arlo Flores",
-            perk: "Healer's Touch"
+            perk: "Healer's Touch",
+            class: "Support"
         };
         survivorList[5] = {
             name: "Riley West",
-            perk: "Cheap Thrill"
+            perk: "Cheap Thrill",
+            class: "Looper"
         };
         survivorList[6] = {
             name: "Iris Daley",
-            perk: "Pot of Life"
+            perk: "Pot of Life",
+            class: "Support"
         };
         survivorList[7] = {
             name: "Jun Inagaki",
-            perk: "Tough"
+            perk: "Tough",
+            class: "Looper"
         };
         survivorList[8] = {
             name: "Yara Valle",
-            perk: "Second Wind"
+            perk: "Second Wind",
+            class: "Looper"
         };
         survivorList[9] = {
             name: "Cora Madden",
-            perk: "Investigative Eye"
+            perk: "Investigative Eye",
+            class: "Genrusher"
         };
         survivorList[10] = {
             name: "Mamo Ikaika",
-            perk: "Mamo's Bat"
+            perk: "Mamo's Bat",
+            class: "Looper"
         };
         survivorList[11] = {
             name: "Seoung Kwan",
-            perk: "Spiritual Connection"
+            perk: "Spiritual Connection",
+            class: "Stealth"
         };
         survivorList[12] = {
             name: "Jack Sato",
-            perk: "Stealthy"
+            perk: "Stealthy",
+            class: "Stealth"
         };
         survivorList[13] = {
             name: "Chaoxing Lai",
-            perk: "Xingxing's Mic"
+            perk: "Xingxing's Mic",
+            class: "Looper",
+            secondaryClass: "Support"
         };
         survivorList[14] = {
             name: "Taylor Dalton",
-            perk: "Good Teacher"
+            perk: "Good Teacher",
+            class: "Genrusher"
         };
         survivorList[15] = {
             name: "Dae-Jung Pak",
-            perk: "Charm"
+            perk: "Charm",
+            class: "Support"
         };
         survivorList[16] = {
             name: "Yeona Jeung",
-            perk: "Obsessed"
+            perk: "Obsessed",
+            class: "Looper",
+            secondaryClass: "Support"
         };
         survivorList[17] = {
             name: "Kyle Wolfe",
-            perk: "Bear Trap"
+            perk: "Bear Trap",
+            class: "Looper",
+            secondaryClass: "Support"
         };
         survivorList[18] = {
             name: "Serena Wolfe",
-            perk: "Hunter's Instinct"
+            perk: "Hunter's Instinct",
+            class: "Support"
         };
         survivorList[19] = {
             name: "Yan Tian",
-            perk: "Detection Machine"
+            perk: "Detection Machine",
+            class: "Genrusher",
+            secondaryClass: "Support"
         };
         survivorList[20] = {
             name: "Nathan Reyes",
-            perk: "Wit's End"
+            perk: "Wit's End",
+            class: "Looper",
+            secondaryClass: "Support"
         };
         survivorList[21] = {
             name: "Elizabeth Payne",
-            perk: "Self Assurance"
+            perk: "Self Assurance",
+            class: "Looper"
         };
         survivorList[22] = {
             name: "Yvonne Kojo",
-            perk: "Fight or Flight"
+            perk: "Fight or Flight",
+            class: "Genrusher"
         };
         survivorList[23] = {
             name: "Becca Prescott",
-            perk: "Sole Survivor"
+            perk: "Sole Survivor",
+            class: "Stealth",
+            secondaryClass: "Genrusher"
         };
         survivorList[24] = {
             name: "Sarah Lindholm",
-            perk: "Lone Wolf"
+            perk: "Lone Wolf",
+            class: "Stealth",
+            secondaryClass: "Genrusher"
         };
         survivorList[25] = {
             name: "Lyndon Davenport",
-            perk: "Rauhm"
+            perk: "Rauhm",
+            class: "Support"
         };
         survivorList[26] = {
             name: "Dakari Bowens",
-            perk: "Heal Gun"
+            perk: "Heal Gun",
+            class: "Support"
         };
         survivorList[27] = {
             name: "Saadiya Ali",
-            perk: "Course Control"
+            perk: "Course Control",
+            class: "Looper",
+            secondaryClass: "Support"
         };
         survivorList[28] = {
             name: "Elijah Songaa",
-            perk: "Breakthrough"
+            perk: "Breakthrough",
+            class: "Support"
         };
         survivorList[29] = {
             name: "Eman Attia",
-            perk: "Evanesce"
+            perk: "Evanesce",
+            class: "Looper",
         };
         survivorList[30] = {
             name: "Aaaqil Che",
-            perk: "Adaptability"
+            perk: "Adaptability",
+            class: "Genrusher"
         };
         survivorList[31] = {
             name: "Yronica Ayala",
-            perk: "Egocentric Leech"
+            perk: "Egocentric Leech",
+            class: "Looper"
         };
         survivorList[32] = {
             name: "Callum Gallagher",
-            perk: "Team Spirit"
+            perk: "Team Spirit",
+            class: "Support",
+            secondaryClass: "Looper"
         };
         survivorList[33] = {
             name: "Emery Rivera",
-            perk: "Disappearing Act"
+            perk: "Disappearing Act",
+            class: "Genrusher",
+            secondaryClass: "Stealth"
         };
         survivorList[34] = {
             name: "Amari Taymiyyah",
-            perk: "Vagrant's Trick"
+            perk: "Vagrant's Trick",
+            class: "Looper"
         };
         survivorList[35] = {
             name: "Sanjana Dewan",
-            perk: "Quiet Steps"
+            perk: "Quiet Steps",
+            class: "Stealth",
+            secondaryClass: "Support"
         };
         survivorList[36] = {
             name: "Kelvin Mars",
-            perk: "Sonar Dart"
+            perk: "Sonar Dart",
+            class: "Support"
         };
         survivorList[37] = {
             name: "Gavin Prescott",
-            perk: "Gavin's Pistol"
+            perk: "Gavin's Pistol",
+            class: "Genrusher",
+            secondaryClass: "Support",
+            unofficialClass: "Support"
         };
         survivorList[38] = {
             name: "Parker Kaplan",
-            perk: "Triple Mocktail"
+            perk: "Triple Mocktail",
+            class: "Genrusher"
         };
         survivorList[39] = {
             name: "Crosby Aldrich",
-            perk: "Royal Rule"
+            perk: "Royal Rule",
+            class: "Genrusher"
         };
         survivorList[40] = {
             name: "Rayner Byrne",
-            perk: "Rayner's Shield"
+            perk: "Rayner's Shield",
+            class: "Looper",
+            secondaryClass: "Support"
         };
         survivorList[41] = {
             name: "Serena 'Sera' Vera",
-            perk: "Smooth Skating"
+            perk: "Smooth Skating",
+            class: "Looper"
         };
         survivorList[42] = {
             name: "Dakota Nicole",
-            perk: "Flame Sprayer"
+            perk: "Flame Sprayer",
+            class: "Looper",
+            secondaryClass: "Support"
         };
         survivorList[43] = {
             name: "Ryder Parikh",
-            perk: "Detail Oriented"
+            perk: "Detail Oriented",
+            class: "Looper"
         };
         survivorList[44] = {
             name: "Makoto Shizuka",
-            perk: "Shortcut"
+            perk: "Shortcut",
+            class: "Genrusher",
+            secondaryClass: "Stealth"
         };
         survivorList[45] = {
             name: "Crystal Kaur",
-            perk: "Clear Quartz"
+            perk: "Clear Quartz",
+            class: "Stealth",
+            secondaryClass: "Support"
         };
         survivorList[46] = {
             name: "Emil Singh",
-            perk: "Inspire"
+            perk: "Inspire",
+            class: "Support"
         };
         survivorList[47] = {
             name: "Jonas Weber",
-            perk: "Sanity Soda"
+            perk: "Sanity Soda",
+            class: "Looper"
         };
         survivorList[48] = {
             name: "Wren Harris",
-            perk: "Menial Work"
+            perk: "Menial Work",
+            class: "Genrusher"
         };
         survivorList[49] = {
             name: "Tabitha Harris",
-            perk: "Maternal Instinct"
+            perk: "Maternal Instinct",
+            class: "Support"
         };
         survivorList[50] = {
             name: "Kiara Cruz",
-            perk: "Life of the Party"
+            perk: "Life of the Party",
+            class: "Stealth",
+            secondaryClass: "Genrusher"
         };
         survivorList[51] = {
             name: "Anais Desir",
-            perk: "Complete Control"
+            perk: "Complete Control",
+            class: "Genrusher"
         };
         survivorList[52] = {
             name: "Dante Fontana-Rosa",
-            perk: "Plane of Elysium"
+            perk: "Plane of Elysium",
+            class: "Support"
         };
         survivorList[53] = {
             name: "Evelyn Maurelle",
-            perk: "Dirty Work"
+            perk: "Dirty Work",
+            class: "Support",
+            secondaryClass: "Stealth"
         };
 
         let killerlist = [];
         killerlist[0] = {
-            name: "The Slasher"
+            name: "The Slasher",
+            class: "Anti-Loop"
         };
         killerlist[1] = {
-            name: "The Host"
+            name: "The Host",
+            class: "Anti-Loop"
         };
         killerlist[2] = {
-            name: "The Ghost"
+            name: "The Ghost",
+            class: "Mobility"
         };
         killerlist[3] = {
-            name: "The Showstopper"
+            name: "The Showstopper",
+            class: "Anti-Loop"
         };
         killerlist[4] = {
-            name: "The Unforgotten"
+            name: "The Unforgotten",
+            class: "Mobility"
         };
         killerlist[5] = {
-            name: "The Werewolf"
+            name: "The Werewolf",
+            class: "Assault"
         };
         killerlist[6] = {
-            name: "The Idol"
+            name: "The Idol",
+            class: "Assault"
         };
         killerlist[7] = {
-            name: "The Android"
+            name: "The Android",
+            class: "Gen-Control"
         };
         killerlist[8] = {
-            name: "The Warden"
+            name: "The Warden",
+            class: "Anti-Loop"
         };
         killerlist[9] = {
-            name: "The Polluted"
+            name: "The Polluted",
+            class: "Anti-Loop"
         };
         killerlist[10] = {
-            name: "The Stalker"
+            name: "The Stalker",
+            class: "Assault"
         };
         killerlist[11] = {
-            name: "The Banshee"
+            name: "The Banshee",
+            class: "Gen-Control"
         };
         killerlist[12] = {
-            name: "The Principal"
+            name: "The Principal",
+            class: "Gen-Control"
         };
         killerlist[13] = {
-            name: "The Janitor"
+            name: "The Janitor",
+            class: "Anti-Loop"
         };
         killerlist[14] = {
-            name: "The Apostate"
+            name: "The Apostate",
+            class: "Assault"
         };
         killerlist[15] = {
-            name: "The Watcher"
+            name: "The Watcher",
+            class: "Gen-Control"
         };
         killerlist[16] = {
-            name: "The Surgeon"
+            name: "The Surgeon",
+            class: "Assault"
         };
         killerlist[17] = {
-            name: "The Voidskulk"
+            name: "The Voidskulk",
+            class: "Mobility",
+            secondaryClass: "Gen-Control"
         };
         killerlist[18] = {
-            name: "The Empress"
+            name: "The Empress",
+            class: "Anti-Loop"
         };
         killerlist[19] = {
-            name: "The Boss"
+            name: "The Boss",
+            class: "Assault"
         };
         killerlist[20] = {
-            name: "The Possessed"
+            name: "The Possessed",
+            class: "Mobility",
+            unofficialClass: "Anti-Loop"
         };
         killerlist[21] = {
-            name: "The Experiment"
+            name: "The Experiment",
+            class: "Gen-Control"
         };
 
 
@@ -461,7 +570,16 @@
         <button class="normalbutton" onclick="ToggleAll('SurvivorList', true)">Activate all</button>
         <button class="normalbutton" onclick="ToggleAll('SurvivorList', false)">Deactivate all</button>
         <br><br>
-
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Looper', true)">Activate all Looper 👟</button>
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Genrusher', true)">Activate all Genrusher ⚡</button>
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Stealth', true)">Activate all Stealth 👁️</button>
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Support', true)">Activate all Support ❤️</button>
+        <br><br>
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Looper', false)">Deactivate all Looper 👟</button>
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Genrusher', false)">Deactivate all Genrusher ⚡</button>
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Stealth', false)">Deactivate all Stealth 👁️</button>
+        <button class="normalbutton" onclick="ToggleClass('SurvivorList','Support', false)">Deactivate all Support ❤️</button>
+        <br><br>
 
 
         <section id="SurvivorList" class="checkboxlist">
@@ -488,6 +606,16 @@
         <button class="normalbutton" onclick="ToggleAll('KillerList', true)">Activate all</button>
         <button class="normalbutton" onclick="ToggleAll('KillerList', false)">Deactivate all</button>
         <br><br>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Anti-Loop', true)">Activate all Anti-Loop 👟</button>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Gen-Control', true)">Activate all Gen-Control ⚡</button>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Mobility', true)">Activate all Mobility 🍃</button>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Assault', true)">Activate all Assault 🔪</button>
+        <br><br>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Anti-Loop', false)">Deactivate all Anti-Loop 👟</button>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Gen-Control', false)">Deactivate all Gen-Control ⚡</button>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Mobility', false)">Deactivate all Mobility 🍃</button>
+        <button class="normalbutton" onclick="ToggleClass('KillerList','Assault', false)">Deactivate all Assault 🔪</button>
+        <br><br>
 
         <section id="KillerList" class="checkboxlist">
 
@@ -500,10 +628,21 @@
     <section class="settingssection">
         <h2>Settings</h2>
 
+        <h3>General</h3>
+
         <label for="GenerateUniqueCharacter">Generate unique characters</label><input type="checkbox"
             id="GenerateUniqueCharacter" onChange="UpdateSetting('GenerateUniqueCharacter')"><br>
         <label for="CharacterAmount">Amount of characters</label> <input id="CharacterAmount"
             onChange="UpdateSetting('CharacterAmount')"><br>
+        <h3>Classes</h3>
+        I added secondary and unofficial classes for some characters.<br>
+        Secondary Class: The character also excels in this class.<br>
+        Unofficial Class: The character rather excels in this class instead of the one given by the game.<br>
+        <br>
+        <label for="UseSecondaryClasses">Use secondary classes along with the first class</label> <input type="checkbox" id="UseSecondaryClasses"
+            onChange="UpdateSetting('UseSecondaryClasses')"><br>
+        <label for="UseUnofficialClasses">Override the normal class with the unofficial class</label> <input type="checkbox" id="UseUnofficialClasses"
+            onChange="UpdateSetting('UseUnofficialClasses')"><br>
 
     </section>
     <br>
@@ -614,8 +753,9 @@
                         randomcharacterpool.splice(randomcharacterindex, 1);
                     }
 
+                    let perkLabel = "Perk: " + randomperk;
 
-                    perklabel.innerHTML = "Perk: " + randomperk;
+                    perklabel.innerHTML = perkLabel;
                     characterLabel.innerHTML = "Character: " + randomcharacter;
 
                     if (generation < characteramount - 1) {
@@ -743,6 +883,60 @@
 
             }
 
+        }
+
+        function ToggleClass(list, characterClass, change) {
+            let listElement = document.getElementById(list);
+            let type = ""
+            let requiredList = ""
+
+            let useSecondaryClassesElement = document.getElementById("UseSecondaryClasses");
+            let useUnofficialClassesElement = document.getElementById("UseUnofficialClasses");
+
+            if (list === "SurvivorList") {
+                type = "Survivor";
+                requiredList = survivorList;
+            } else if (list === "KillerList") {
+                type = "Killer";
+                requiredList = killerlist;
+            }
+
+            for (index = 0; index < listElement.children.length; index++) {
+                let element = listElement.children[index];
+
+                if (element.type == "checkbox") {
+                    let splitId = element.id.split(type + "_")
+                    let characterId = splitId[1].split("_Checkbox")[0]
+
+
+
+                    let characterEntry = requiredList[Number(characterId)];
+
+
+                    var isClass = false
+
+                    if (characterEntry.class == characterClass) {
+                        isClass = true
+                    }
+                    if (useUnofficialClassesElement.checked == true && characterEntry.unofficialClass != undefined) {
+                        if (characterEntry.unofficialClass != characterClass) {
+                            isClass = false
+                        }
+                    }
+                    if (useSecondaryClassesElement.checked == true && characterEntry.secondaryClass == characterClass) {
+                        isClass = true
+                    }
+                    if (useUnofficialClassesElement.checked == true && characterEntry.unofficialClass == characterClass) {
+                        isClass = true
+                    }
+
+
+                    if (isClass == true) {
+                        element.checked = change;
+                        SaveCheckboxOption(element.name, type);
+                    }
+                }
+            }
         }
 
 
@@ -960,7 +1154,25 @@
 
             let label = document.createElement("label");
             label.setAttribute("for", survivor.name);
-            label.innerHTML = survivor.name + " (" + survivor.perk + ")" + "<br>";
+
+            let survivorLabel = survivor.name + " (" + survivor.perk + ") "
+            survivorLabel = survivorLabel + icons[survivor.class] // Apply icon for first class
+
+            // If survivor has a second class, apply icon
+
+            if (survivor.secondaryClass != undefined) {
+                survivorLabel = survivorLabel + " / " + icons[survivor.secondaryClass];
+            }
+
+            // If survivor has an unofficial class, apply icon and warning
+
+            if (survivor.unofficialClass != undefined) {
+                survivorLabel = survivorLabel + " [Unofficial: " + icons[survivor.unofficialClass] + "]";
+            }
+
+            survivorLabel = survivorLabel + "<br>";
+
+            label.innerHTML = survivorLabel
 
             if (CheckIfSaved(localStorage.checkedSurvivors, index.toString())) {
                 checkbox.checked = true;
@@ -986,7 +1198,26 @@
 
             let label = document.createElement("label");
             label.setAttribute("for", killer.name);
-            label.innerHTML = killer.name + "<br>";
+
+            let killerLabel = killer.name + " ";
+            killerLabel = killerLabel + icons[killer.class]; // Apply icon for class
+
+            // If killer has a secondary class, apply icon
+
+            if (killer.secondaryClass != undefined) {
+                killerLabel = killerLabel + " / " + icons[killer.secondaryClass];
+            }
+
+
+            // If killer has an unoffical class, apply icon and warning
+
+            if (killer.unofficialClass != undefined) {
+                killerLabel = killerLabel + " [Unofficial: " + icons[killer.unofficialClass] + "]"
+            }
+            
+
+            killerLabel = killerLabel + "<br>";
+            label.innerHTML = killerLabel;
 
 
             if (CheckIfSaved(localStorage.checkedKillers, index.toString())) {
@@ -1001,9 +1232,17 @@
 
         let generateuniquecharacter = document.getElementById("GenerateUniqueCharacter");
         let characteramount = document.getElementById("CharacterAmount");
+        let useSecondaryClasses = document.getElementById("UseSecondaryClasses");
+        let useUnofficialClasses = document.getElementById("UseUnofficialClasses");
 
         if (localStorage.GenerateUniqueCharacter === "True") {
             generateuniquecharacter.checked = true;
+        }
+        if (localStorage.UseSecondaryClasses === "True") {
+            useSecondaryClasses.checked = true;
+        }
+        if (localStorage.UseUnofficialClasses === "True") {
+            useUnofficialClasses.checked = true;
         }
 
         characteramount.value = localStorage.CharacterAmount;
