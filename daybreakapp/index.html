@@ -1,15 +1,15 @@
 <html>
 
 <head>
-    <title>DaybreakApp</title>
+    <title>DaybreakTool</title>
 
-    <meta content="DaybreakApp" property="og:title" />
+    <meta content="DaybreakTool" property="og:title" />
     <meta content="Survivor and Killer randomizer for Daybreak." property="og:description" />
-    <meta content="deceivingseagull.github.io/daybreakapp" property="og:url" />
-    <meta content="deceivingseagull.github.io/daybreakapp/resources/icon.png" property="og:image" />
+    <meta content="cloudd713.github.io/daybreaktool" property="og:url" />
+    <meta content="cloudd713.github.io/daybreaktool/resources/icon.png" property="og:image" />
     <meta content="#484848" data-react-helmet="true" name="theme-color" />
 
-    <link rel="icon" type="image/x-icon" href="https://deceivingseagull.github.io/daybreakapp/resources/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://cloudd713.github.io/daybreaktool/resources/favicon.ico">
 
     <style>
         .tab {
@@ -413,6 +413,57 @@
             class: "Support",
             secondaryClass: "Stealth"
         };
+        survivorList[54] = {
+            name: "Dhanya Choudhary",
+            perk: "Escape Plan",
+            class: "Genrusher",
+            secondaryClass: "Stealth"
+        };
+        survivorList[54] = {
+            name: "Millicent Hurley",
+            perk: "Event Recorder",
+            class: "Support"
+        };
+        survivorList[55] = {
+            name: "Ted Ainsley",
+            perk: "Loot: Battery",
+            class: "Genrusher"
+        };
+        survivorList[56] = {
+            name: "Diego",
+            perk: "Loot: Switchblade",
+            class: "Looper",
+            secondaryClass: "Support"
+        };
+        survivorList[57] = {
+            name: "Ana 'Tempus' Acosta",
+            perk: "Time Jump",
+            class: "Looper"
+        };
+        survivorList[58] = {
+            name: "Joel 'Zeal' Acosta",
+            perk: "Light Manipulation",
+            class: "Stealth"
+        };
+        survivorList[59] = {
+            name: "Rajani 'Barret' Tapadia",
+            perk: "Healing Bot",
+            class: "Support"
+        };
+        survivorList[60] = {
+            name: "Santino Herrera",
+            perk: "Sonic Boom",
+            class: "Looper",
+            secondaryClass: "Support"
+        };
+        survivorList[60] = {
+            name: "Kamaria Tull & Narantuya",
+            perk: "Help, Narantuya!",
+            class: "Genrusher",
+            secondaryClass: "Support",
+            unofficialClass: "Support"
+        };
+        
 
         let killerlist = [];
         killerlist[0] = {
@@ -510,7 +561,16 @@
             name: "The Stareater",
             class: "Mobility"
         };
-
+        killerlist[23] = {
+            name: "The Night Countess",
+            class: "Anti-Loop"
+        };
+        killerlist[24] = {
+            name: "The People's Hero",
+            class: "Gen-Control",
+            secondaryClass: "Anti-Loop"
+        };
+        
 
         if (localStorage.checkedSurvivors === null || localStorage.checkedSurvivors === undefined) {
             localStorage.checkedSurvivors = "";
